@@ -76,6 +76,11 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(File::class);
     }
 
+    public function requests(): HasMany
+    {
+        return $this->hasMany(FileRequest::class);
+    }
+
     public function folders(): HasMany
     {
         return $this->hasMany(Folder::class);

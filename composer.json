@@ -9,6 +9,7 @@
         "php": "^8.2",
         "awcodes/filament-gravatar": "^3.0",
         "coconutcraig/laravel-postmark": "^3.3",
+        "dyrynda/laravel-nullable-fields": "^4.5",
         "filament/filament": "^4.0",
         "laravel/framework": "^12.0",
         "laravel/horizon": "^5.33",
