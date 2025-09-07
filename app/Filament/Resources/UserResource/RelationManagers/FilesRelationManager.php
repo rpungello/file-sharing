@@ -95,9 +95,6 @@ class FilesRelationManager extends RelationManager
             ->filters([
                 TrashedFilter::make(),
             ])
-            ->headerActions([
-                CreateAction::make(),
-            ])
             ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),
