@@ -27,6 +27,11 @@
                     <flux:table.cell>
                         <flux:button variant="primary"
                                      size="sm"
+                                     :href="route('files.show', $file)"
+                                     icon="eye"
+                        />
+                        <flux:button variant="primary"
+                                     size="sm"
                                      :href="route('files.download', ['file' => $file->getKey(), 'token' => $file->download_token])"
                                      icon="arrow-down-tray"
                         />
