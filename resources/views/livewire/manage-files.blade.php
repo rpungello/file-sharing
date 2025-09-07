@@ -2,4 +2,26 @@
     <flux:button variant="primary" :href="route('files.upload')" icon="arrow-up-tray">
         {{ __('Upload') }}
     </flux:button>
+
+    <flux:table :paginate="$this->files">
+        <flux:table.columns>
+            <flux:table.column>{{ __('Title') }}</flux:table.column>
+            <flux:table.column>{{ __('Filename') }}</flux:table.column>
+            <flux:table.column>{{ __('Folder') }}</flux:table.column>
+            <flux:table.column>{{ __('Size') }}</flux:table.column>
+            <flux:table.column>{{ __('Created') }}</flux:table.column>
+            <flux:table.column />
+        </flux:table.columns>
+        <flux:table.rows>
+            @foreach($this->files as $file)
+                <flux:table.row>
+                    <flux:table.cell>{{ $file->title }}</flux:table.cell>
+                    <flux:table.cell>{{ $file->filename }}</flux:table.cell>
+                    <flux:table.cell>{{ $file->folder?->title }}</flux:table.cell>
+                    <flux:table.cell>{{ \Illuminate\Support\Number::fileSize($file->size) }}</flux:table.cell>
+                    <flux:table.cell>{{ $file->created_at->format('F j, Y g:ia') }}</flux:table.cell>
+                </flux:table.row>
+            @endforeach
+        </flux:table.rows>
+    </flux:table>
 </div>
