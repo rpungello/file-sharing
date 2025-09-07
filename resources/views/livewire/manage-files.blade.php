@@ -1,8 +1,4 @@
-<div>
-    <flux:button variant="primary" :href="route('files.upload')" icon="arrow-up-tray">
-        {{ __('Upload') }}
-    </flux:button>
-
+<div class="space-y-4">
     <flux:table :paginate="$this->files">
         <flux:table.columns>
             <flux:table.column>{{ __('Title') }}</flux:table.column>
@@ -41,6 +37,10 @@
             @endforeach
         </flux:table.rows>
     </flux:table>
+
+    <flux:button variant="primary" :href="route('files.upload')" icon="arrow-up-tray">
+        {{ __('Upload') }}
+    </flux:button>
 
     <flux:modal name="share-file" class="md:w-96">
         <div class="space-y-6">
