@@ -16,6 +16,7 @@ class File extends Model
 
     protected $fillable = [
         'user_id',
+        'folder_id',
         'title',
         'filename',
         'disk',
