@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 0.1.2 - 2025-09-07
+
+Trust all proxies by default
+
 ## 0.1.1 - 2025-09-07
 
 Add missing `Dockerfile`
