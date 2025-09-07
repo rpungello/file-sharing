@@ -4,5 +4,5 @@ use App\Actions\FileDeleteExpired;
 use Illuminate\Support\Facades\Schedule;
 
 Schedule::job(
-    new FileDeleteExpired()
+    new FileDeleteExpired
 )->daily()->onOneServer();
