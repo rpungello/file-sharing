@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 0.4.0 - 2025-09-07
+
+Add filament-based admin panel
+
 ## 0.3.0 - 2025-09-07
 
 Added background processing for expired files
