@@ -7,6 +7,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -83,6 +84,11 @@ class User extends Authenticatable implements FilamentUser
     public function tags(): HasMany
     {
         return $this->hasMany(Tag::class);
+    }
+
+    public function downloads(): HasManyThrough
+    {
+        return $this->hasManyThrough(Download::class, File::class);
     }
 
     public function canAccessPanel(Panel $panel): bool
