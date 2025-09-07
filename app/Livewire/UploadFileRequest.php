@@ -4,8 +4,10 @@ namespace App\Livewire;
 
 use App\Models\File;
 use App\Models\FileRequest;
+use CraigPaul\Mail\TemplatedMailable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -42,7 +44,7 @@ class UploadFileRequest extends Component
     public function uploadFile(): void
     {
         /** @var File $file */
-        $this->fileRequest->user->files()->create(
+        $file = $this->fileRequest->user->files()->create(
             [
                 'file_request_id' =>  $this->fileRequest->getKey(),
                 'title' =>  $this->title,
@@ -54,6 +56,16 @@ class UploadFileRequest extends Component
 
         $this->file->delete();
         $this->fileRequest->delete();
+
+        $mailable = tap(new TemplatedMailable)
+            ->identifier(config('services.postmark.template.request_uploaded'))
+            ->include([
+                'request_title' => $this->fileRequest->title,
+                'file_title' => $this->title,
+                'file_download_url' => $file->getDownloadUrl(),
+            ]);
+
+        Mail::to($this->fileRequest->user)->queue($mailable);
 
         $this->redirectRoute('requests.uploaded');
     }

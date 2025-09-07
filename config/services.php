@@ -18,6 +18,7 @@ return [
         'token' => env('POSTMARK_TOKEN'),
         'template' => [
             'test' => env('POSTMARK_TEMPLATE_TEST'),
+            'request_uploaded' => env('POSTMARK_TEMPLATE_REQUEST_UPLOADED'),
         ],
     ],
 
