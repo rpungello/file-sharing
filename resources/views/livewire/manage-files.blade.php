@@ -25,12 +25,24 @@
                                      size="sm"
                                      :href="route('files.download', ['file' => $file->getKey(), 'token' => $file->download_token])"
                                      icon="arrow-down-tray"
-                        >
-
-                        </flux:button>
+                        />
+                        <flux:button variant="primary"
+                                     size="sm"
+                                     icon="share"
+                                     wire:click="share({{ $file->getKey() }})"
+                        />
                     </flux:table.cell>
                 </flux:table.row>
             @endforeach
         </flux:table.rows>
     </flux:table>
+
+    <flux:modal name="share-file" class="md:w-96">
+        <div class="space-y-6">
+            <div>
+                <flux:heading size="lg">{{ __('Share Link') }}</flux:heading>
+            </div>
+            <flux:input :label="__('Link')" :value="$shareModelLink" readonly copyable />
+        </div>
+    </flux:modal>
 </div>
