@@ -11,9 +11,7 @@ use App\Livewire\ShowFile;
 use App\Livewire\UploadFile;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', fn () => redirect()->route('dashboard'))->name('home');
 
 Route::get('files/{file}/download', DownloadFileController::class)->name('files.download');
 
