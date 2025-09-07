@@ -5,8 +5,8 @@ use App\Livewire\ManageFolders;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
-use App\Livewire\UploadFile;
 use App\Livewire\ShowFile;
+use App\Livewire\UploadFile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
