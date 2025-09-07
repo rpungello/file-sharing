@@ -70,8 +70,8 @@
 
     <flux:pagination :paginator="$this->files"/>
 
-    <flux:button variant="primary" :href="route('files.upload')" icon="arrow-up-tray">
-        {{ __('Upload') }}
+    <flux:button variant="primary" :href="route('files.upload')" icon="plus">
+        {{ __('Add New') }}
     </flux:button>
 
     <flux:modal name="share-file" class="md:w-96">
