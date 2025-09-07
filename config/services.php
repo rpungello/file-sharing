@@ -16,6 +16,9 @@ return [
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
+        'template' => [
+            'test' => env('POSTMARK_TEMPLATE_TEST'),
+        ],
     ],
 
     'ses' => [
