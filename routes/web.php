@@ -1,9 +1,12 @@
 <?php
 
+use App\Livewire\ManageFiles;
 use App\Livewire\ManageFolders;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
+use App\Livewire\UploadFile;
+use App\Livewire\ShowFile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,6 +25,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 
     Route::get('folders', ManageFolders::class)->name('folders.index');
+    Route::get('files', ManageFiles::class)->name('files.index');
+    Route::get('files/upload', UploadFile::class)->name('files.upload');
+    Route::get('files/{file}', ShowFile::class)->name('files.show');
 });
 
 require __DIR__.'/auth.php';

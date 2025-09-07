@@ -20,7 +20,7 @@ class File extends Model
         'filename',
         'disk',
         'size',
-        'uuid',
+        'path',
     ];
 
     public function user(): BelongsTo

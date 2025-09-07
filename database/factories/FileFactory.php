@@ -17,7 +17,7 @@ class FileFactory extends Factory
             'title' => $this->faker->word(),
             'filename' => $this->faker->word(),
             'size' => $this->faker->randomNumber(),
-            'uuid' => $this->faker->uuid(),
+            'path' => $this->faker->word(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
 
