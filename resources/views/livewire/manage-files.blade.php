@@ -42,7 +42,7 @@
             <div>
                 <flux:heading size="lg">{{ __('Share Link') }}</flux:heading>
             </div>
-            <flux:input :label="__('Link')" :value="$shareModelLink" readonly copyable />
+            <flux:input :value="$shareModelLink" readonly copyable />
         </div>
     </flux:modal>
 </div>
