@@ -7,4 +7,21 @@ services:
       - '${WEB_PORT:-80}:8000'
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/up"]
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/up" ]
+
+  scheduler:
+    image: "ghcr.io/rpungello/file-sharing:${IMAGE_TAG:-latest}"
+    env_file: stack.env
+    entrypoint: [ "php", "artisan", "schedule:work" ]
+    restart: unless-stopped
+    healthcheck:
+      test: [ "NONE" ]
+      disable: true
+
+  worker:
+    image: "ghcr.io/rpungello/file-sharing:${IMAGE_TAG:-latest}"
+    env_file: stack.env
+    entrypoint: [ "php", "artisan", "horizon" ]
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "php", "artisan", "horizon:status" ]
