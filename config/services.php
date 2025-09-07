@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'shlink' => [
+        'base_url' => env('SHLINK_BASE_URL'),
+        'api_key' => env('SHLINK_API_KEY'),
+        'version' => env('SHLINK_VERSION', '3'),
+    ],
+
 ];

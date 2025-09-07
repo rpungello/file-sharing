@@ -20,8 +20,9 @@ class File extends Model
         'title',
         'filename',
         'disk',
-        'size',
         'path',
+        'size',
+        'download_short_url',
     ];
 
     public function user(): BelongsTo
@@ -32,5 +33,13 @@ class File extends Model
     public function folder(): BelongsTo
     {
         return $this->belongsTo(Folder::class);
+    }
+
+    public function getDownloadUrl(): string
+    {
+        return route('files.download', [
+            'file' => $this,
+            'token' => $this->download_token,
+        ]);
     }
 }

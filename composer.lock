@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "046bda71bd4ae5555f90223edcbc07f8",
+    "content-hash": "1169573020e2d1daf55e269c5a922886",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -3818,6 +3818,60 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.1"
             },
             "time": "2025-09-04T20:59:21+00:00"
+        },
+        {
+            "name": "shlinkio/shlink-php-sdk",
+            "version": "v2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shlinkio/shlink-php-sdk.git",
+                "reference": "6945613cce5609beb38b18640569e8c9e825723a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shlinkio/shlink-php-sdk/zipball/6945613cce5609beb38b18640569e8c9e825723a",
+                "reference": "6945613cce5609beb38b18640569e8c9e825723a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.3",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.1"
+            },
+            "require-dev": {
+                "devster/ubench": "^2.1",
+                "guzzlehttp/guzzle": "^7.9",
+                "phpstan/phpstan": "^2.1",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "phpunit/phpcov": "^11.0",
+                "phpunit/phpunit": "^12.2",
+                "roave/security-advisories": "dev-master",
+                "shlinkio/php-coding-standard": "~2.4.0",
+                "symfony/var-dumper": "^7.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Shlinkio\\Shlink\\SDK\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alejandro Celaya",
+                    "email": "alejandro@alejandrocelaya.com",
+                    "homepage": "https://www.alejandrocelaya.com"
+                }
+            ],
+            "description": "A PHP SDK to consume Shlink's REST API",
+            "support": {
+                "issues": "https://github.com/shlinkio/shlink-php-sdk/issues",
+                "source": "https://github.com/shlinkio/shlink-php-sdk/tree/v2.5.0"
+            },
+            "time": "2025-07-25T07:10:44+00:00"
         },
         {
             "name": "symfony/clock",
