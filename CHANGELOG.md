@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 0.2.0 - 2025-09-07
+
+Added mobile UI for file list
+
 ## 0.1.2 - 2025-09-07
 
 Trust all proxies by default
