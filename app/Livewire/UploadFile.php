@@ -55,7 +55,7 @@ class UploadFile extends Component
             Log::error($t);
         }
 
-        foreach($this->tag_ids as $id) {
+        foreach ($this->tag_ids as $id) {
             $file->tags()->attach($id);
         }
 
