@@ -59,6 +59,7 @@ class UploadFile extends Component
             $file->tags()->attach($id);
         }
 
+        $this->file->delete();
         $this->redirectRoute('files.show', $file->getKey());
     }
 
