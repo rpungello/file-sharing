@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DownloadFileController;
 use App\Livewire\ManageFiles;
 use App\Livewire\ManageFolders;
 use App\Livewire\Settings\Appearance;
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('files/{file}/download', DownloadFileController::class)->name('files.download');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

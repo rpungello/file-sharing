@@ -20,6 +20,15 @@
                     <flux:table.cell>{{ $file->folder?->title }}</flux:table.cell>
                     <flux:table.cell>{{ \Illuminate\Support\Number::fileSize($file->size) }}</flux:table.cell>
                     <flux:table.cell>{{ $file->created_at->format('F j, Y g:ia') }}</flux:table.cell>
+                    <flux:table.cell>
+                        <flux:button variant="primary"
+                                     size="sm"
+                                     :href="route('files.download', ['file' => $file->getKey(), 'token' => $file->download_token])"
+                                     icon="arrow-down-tray"
+                        >
+
+                        </flux:button>
+                    </flux:table.cell>
                 </flux:table.row>
             @endforeach
         </flux:table.rows>
