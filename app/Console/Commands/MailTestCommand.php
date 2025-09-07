@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Models\User;
 use CraigPaul\Mail\TemplatedMailable;
-use CraigPaul\Mail\TemplatedMailMessage;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
@@ -31,6 +30,7 @@ class MailTestCommand extends Command
 
             return static::FAILURE;
         }
+
         return static::SUCCESS;
     }
 }

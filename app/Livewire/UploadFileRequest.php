@@ -46,8 +46,8 @@ class UploadFileRequest extends Component
         /** @var File $file */
         $file = $this->fileRequest->user->files()->create(
             [
-                'file_request_id' =>  $this->fileRequest->getKey(),
-                'title' =>  $this->title,
+                'file_request_id' => $this->fileRequest->getKey(),
+                'title' => $this->title,
                 'filename' => $this->file->getClientOriginalName(),
                 'path' => $this->file->store('files'),
                 'size' => $this->file->getSize(),

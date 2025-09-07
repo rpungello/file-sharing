@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 #[ObservedBy(FileRequestObserver::class)]
 class FileRequest extends Model
 {
-    use HasFactory, SoftDeletes, NullableFields;
+    use HasFactory, NullableFields, SoftDeletes;
 
     protected $fillable = [
         'user_id',

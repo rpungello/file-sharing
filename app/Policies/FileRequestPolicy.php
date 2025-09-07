@@ -10,31 +10,38 @@ class FileRequestPolicy
 {
     use HandlesAuthorization;
 
-    public function viewAny(User $user): bool {
+    public function viewAny(User $user): bool
+    {
         return true;
     }
 
-    public function view(User $user, FileRequest $fileRequest): bool {
+    public function view(User $user, FileRequest $fileRequest): bool
+    {
         return $user->getKey() === $fileRequest->user_id;
     }
 
-    public function create(User $user): bool {
+    public function create(User $user): bool
+    {
         return true;
     }
 
-    public function update(User $user, FileRequest $fileRequest): bool {
+    public function update(User $user, FileRequest $fileRequest): bool
+    {
         return $this->view($user, $fileRequest);
     }
 
-    public function delete(User $user, FileRequest $fileRequest): bool {
+    public function delete(User $user, FileRequest $fileRequest): bool
+    {
         return $this->update($user, $fileRequest);
     }
 
-    public function restore(User $user, FileRequest $fileRequest): bool {
+    public function restore(User $user, FileRequest $fileRequest): bool
+    {
         return $this->delete($user, $fileRequest);
     }
 
-    public function forceDelete(User $user, FileRequest $fileRequest): bool {
+    public function forceDelete(User $user, FileRequest $fileRequest): bool
+    {
         return $this->delete($user, $fileRequest);
     }
 }
