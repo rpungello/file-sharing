@@ -16,7 +16,7 @@ class FileDeleteExpired
 
     public string $commandDescription = 'Deletes any files where the expiration timestamp has passed';
 
-    public function handle()
+    public function handle(): void
     {
         File::where('expires_at', '<', now())->each(fn (File $file) => $file->delete());
     }

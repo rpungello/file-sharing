@@ -25,6 +25,11 @@ class File extends Model
         'path',
         'size',
         'download_short_url',
+        'expires_at',
+    ];
+
+    protected $casts = [
+        'expires_at' => 'timestamp',
     ];
 
     public function user(): BelongsTo

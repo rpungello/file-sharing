@@ -48,8 +48,15 @@
             <progress max="100" x-bind:value="progress"></progress>
         </div>
 
+        <!-- Expiration -->
+        <flux:date-picker wire:model="expires_at"
+                          :label="__('Expiration Date')"
+                          :min="now()->addDay()->format('Y-m-d')"
+                          clearable
+        />
+
         <!-- Upload Button -->
-        <flux:button variant="primary" type="submit" icon="arrow-up-tray">
+        <flux:button variant="primary" type="submit" icon="arrow-up-tray" :disabled="empty($file)">
             {{ __('Upload') }}
         </flux:button>
     </div>

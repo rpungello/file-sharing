@@ -29,6 +29,9 @@ class UploadFile extends Component
     #[Validate(['required', 'file'])]
     public ?TemporaryUploadedFile $file = null;
 
+    #[Validate(['nullable', 'date', 'after:today'])]
+    public string $expires_at = '';
+
     public function render(): View
     {
         return view('livewire.upload-file');
