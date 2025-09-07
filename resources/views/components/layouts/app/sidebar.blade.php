@@ -18,6 +18,9 @@
                     @can('viewHorizon')
                         <flux:navlist.item icon="cpu-chip" :href="route('horizon.index')" target="horizon">{{ __('Horizon') }}</flux:navlist.item>
                     @endif
+                    @if(auth()->user()?->admin)
+                        <flux:navlist.item icon="light-bulb" :href="route('filament.admin.pages.dashboard')" target="filament">{{ __('Filament') }}</flux:navlist.item>
+                    @endif
                 </flux:navlist.group>
 
                 <flux:navlist.group :heading="__('Content')" class="grid">
