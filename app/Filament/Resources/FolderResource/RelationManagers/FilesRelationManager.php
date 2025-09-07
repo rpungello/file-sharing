@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\UserResource\RelationManagers;
+namespace App\Filament\Resources\FolderResource\RelationManagers;
 
 use App\Models\File;
 use Filament\Actions\BulkActionGroup;
@@ -84,19 +84,12 @@ class FilesRelationManager extends RelationManager
 
                 TextColumn::make('size'),
 
-                TextColumn::make('folder.title')
-                    ->searchable()
-                    ->sortable(),
-
                 TextColumn::make('expires_at')
                     ->label('Expires On')
                     ->date(),
             ])
             ->filters([
                 TrashedFilter::make(),
-            ])
-            ->headerActions([
-                CreateAction::make(),
             ])
             ->recordActions([
                 EditAction::make(),

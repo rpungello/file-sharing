@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\FileResource\Pages;
-use App\Filament\Resources\FileResource\RelationManagers\DownloadsRelationManager;
-use App\Filament\Resources\FileResource\RelationManagers\TagsRelationManager;
-use App\Models\File;
+use App\Filament\Resources\FolderResource\Pages;
+use App\Filament\Resources\FolderResource\RelationManagers\FilesRelationManager;
+use App\Models\Folder;
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -15,7 +14,6 @@ use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreAction;
 use Filament\Actions\RestoreBulkAction;
-use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\TextEntry;
@@ -29,13 +27,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class FileResource extends Resource
+class FolderResource extends Resource
 {
-    protected static ?string $model = File::class;
+    protected static ?string $model = Folder::class;
 
-    protected static ?string $slug = 'files';
+    protected static ?string $slug = 'folders';
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocument;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedFolder;
 
     public static function form(Schema $schema): Schema
     {
@@ -49,34 +47,13 @@ class FileResource extends Resource
                 TextInput::make('title')
                     ->required(),
 
-                TextInput::make('filename')
-                    ->required(),
-
-                TextInput::make('disk'),
-
-                TextInput::make('path'),
-
-                TextInput::make('size')
-                    ->required()
-                    ->integer(),
-
                 TextEntry::make('created_at')
                     ->label('Created Date')
-                    ->state(fn (?File $record): string => $record?->created_at?->diffForHumans() ?? '-'),
+                    ->state(fn (?Folder $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 TextEntry::make('updated_at')
                     ->label('Last Modified Date')
-                    ->state(fn (?File $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
-
-                Select::make('folder_id')
-                    ->relationship('folder', 'title')
-                    ->searchable(),
-
-                TextInput::make('download_short_url')
-                    ->url(),
-
-                DatePicker::make('expires_at')
-                    ->label('Expires On'),
+                    ->state(fn (?Folder $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 
@@ -91,16 +68,6 @@ class FileResource extends Resource
                 TextColumn::make('title')
                     ->searchable()
                     ->sortable(),
-
-                TextColumn::make('filename'),
-
-                TextColumn::make('folder.title')
-                    ->searchable()
-                    ->sortable(),
-
-                TextColumn::make('expires_at')
-                    ->label('Expires On')
-                    ->date(),
             ])
             ->filters([
                 TrashedFilter::make(),
@@ -123,16 +90,16 @@ class FileResource extends Resource
     public static function getRelations(): array
     {
         return [
-            DownloadsRelationManager::class,
-            TagsRelationManager::class,
+            FilesRelationManager::class,
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListFiles::route('/'),
-            'edit' => Pages\EditFile::route('/{record}/edit'),
+            'index' => Pages\ListFolders::route('/'),
+            'create' => Pages\CreateFolder::route('/create'),
+            'edit' => Pages\EditFolder::route('/{record}/edit'),
         ];
     }
 
@@ -146,21 +113,17 @@ class FileResource extends Resource
 
     public static function getGlobalSearchEloquentQuery(): Builder
     {
-        return parent::getGlobalSearchEloquentQuery()->with(['folder', 'user']);
+        return parent::getGlobalSearchEloquentQuery()->with(['user']);
     }
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['title', 'folder.title', 'user.name'];
+        return ['title', 'user.name'];
     }
 
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         $details = [];
-
-        if ($record->folder) {
-            $details['Folder'] = $record->folder->title;
-        }
 
         if ($record->user) {
             $details['User'] = $record->user->name;
