@@ -2,6 +2,11 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 0.5.0 - 2025-09-07
+
+- Implemented basic dashboard
+- Added file requests
+
 ## 0.4.0 - 2025-09-07
 
 Add filament-based admin panel
