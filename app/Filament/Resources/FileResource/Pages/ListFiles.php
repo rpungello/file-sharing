@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\FileResource\Pages;
 
 use App\Filament\Resources\FileResource;
-use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListFiles extends ListRecords
