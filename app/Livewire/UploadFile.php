@@ -52,7 +52,7 @@ class UploadFile extends Component
 
         try {
             $file->update([
-                'download_short_url' => Shlink::createShortUrl($file->getDownloadUrl())
+                'download_short_url' => Shlink::createShortUrl($file->getDownloadUrl()),
             ]);
         } catch (Throwable $t) {
             Log::error($t);

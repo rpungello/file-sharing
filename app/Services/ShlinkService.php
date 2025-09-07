@@ -18,9 +18,9 @@ class ShlinkService
 
     public function __construct()
     {
-        $httpFactory = new HttpFactory();
+        $httpFactory = new HttpFactory;
         $httpClient = new HttpClient(
-            new Client(),
+            new Client,
             $httpFactory,
             $httpFactory,
             ShlinkConfig::fromArray([
