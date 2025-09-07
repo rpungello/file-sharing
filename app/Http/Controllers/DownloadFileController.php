@@ -15,6 +15,11 @@ class DownloadFileController extends Controller
             abort(403);
         }
 
+        $file->downloads()->create([
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+        ]);
+
         return redirect()->away(
             Storage::temporaryUrl(
                 $file->path,
