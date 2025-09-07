@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Folder;
 use Flux\Flux;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\View\View;
@@ -27,6 +28,14 @@ class ManageFolders extends Component
         $this->reset('title');
 
         Flux::toast('Folder created successfully.', variant: 'success');
+    }
+
+    public function removeFolder(Folder $folder): void
+    {
+        $this->authorize('delete', $folder);
+        $folder->delete();
+
+        Flux::toast("Folder $folder->title deleted successfully.", variant: 'success');
     }
 
     #[Computed]

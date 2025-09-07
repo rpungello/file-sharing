@@ -37,4 +37,12 @@ class ManageFiles extends Component
 
         Flux::modal('share-file')->show();
     }
+
+    public function removeFile(File $file): void
+    {
+        $this->authorize('delete', $file);
+        $file->delete();
+
+        Flux::toast("File $file->title deleted successfully.", variant: 'success');
+    }
 }

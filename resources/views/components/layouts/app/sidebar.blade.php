@@ -129,6 +129,9 @@
 
         {{ $slot }}
 
+        <flux:toast.group>
+            <flux:toast />
+        </flux:toast.group>
         @fluxScripts
     </body>
 </html>

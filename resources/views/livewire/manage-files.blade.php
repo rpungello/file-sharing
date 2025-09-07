@@ -31,6 +31,11 @@
                                      icon="share"
                                      wire:click="share({{ $file->getKey() }})"
                         />
+                        <flux:button variant="danger"
+                                     size="sm"
+                                     icon="trash"
+                                     wire:click="removeFile({{ $file->getKey() }})"
+                        />
                     </flux:table.cell>
                 </flux:table.row>
             @endforeach
