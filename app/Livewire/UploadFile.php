@@ -23,18 +23,15 @@ class UploadFile extends Component
     #[Validate(['nullable', 'exists:folders,id'])]
     public ?int $folder_id = null;
 
+    #[Validate(['array', 'exists:tags,id'])]
+    public array $tag_ids = [];
+
     #[Validate(['required', 'file'])]
     public ?TemporaryUploadedFile $file = null;
 
     public function render(): View
     {
         return view('livewire.upload-file');
-    }
-
-    #[Computed]
-    public function folders(): Collection
-    {
-        return auth()->user()->folders()->orderBy('title')->get();
     }
 
     public function uploadFile(): void
@@ -58,6 +55,22 @@ class UploadFile extends Component
             Log::error($t);
         }
 
+        foreach($this->tag_ids as $id) {
+            $file->tags()->attach($id);
+        }
+
         $this->redirectRoute('files.show', $file->getKey());
+    }
+
+    #[Computed]
+    public function folders(): Collection
+    {
+        return auth()->user()->folders()->orderBy('title')->get();
+    }
+
+    #[Computed]
+    public function tags(): Collection
+    {
+        return auth()->user()->tags()->orderBy('name')->get();
     }
 }
