@@ -13,6 +13,7 @@ class FileDeleteExpired
     use AsCommand, AsJob, AsObject;
 
     public string $commandSignature = 'file:delete-expired';
+
     public string $commandDescription = 'Deletes any files where the expiration timestamp has passed';
 
     public function handle()
