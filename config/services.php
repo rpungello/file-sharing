@@ -19,6 +19,7 @@ return [
         'template' => [
             'test' => env('POSTMARK_TEMPLATE_TEST'),
             'request_uploaded' => env('POSTMARK_TEMPLATE_REQUEST_UPLOADED'),
+            'file_requested' => env('POSTMARK_TEMPLATE_FILE_REQUESTED'),
         ],
     ],
 

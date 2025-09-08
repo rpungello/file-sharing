@@ -18,6 +18,7 @@ class FileRequest extends Model
     protected $fillable = [
         'user_id',
         'folder_id',
+        'contact_id',
         'title',
         'description',
         'upload_token',
@@ -38,10 +39,15 @@ class FileRequest extends Model
         return $this->belongsTo(Folder::class);
     }
 
+    public function contact(): BelongsTo
+    {
+        return $this->belongsTo(Contact::class);
+    }
+
     public function getUploadUrl(): string
     {
         return route('requests.upload', [
-            'request' => $this,
+            'fileRequest' => $this,
             'token' => $this->upload_token,
         ]);
     }

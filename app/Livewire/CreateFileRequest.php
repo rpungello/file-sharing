@@ -4,9 +4,11 @@ namespace App\Livewire;
 
 use App\Facades\Shlink;
 use App\Models\FileRequest;
+use CraigPaul\Mail\TemplatedMailable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -22,6 +24,9 @@ class CreateFileRequest extends Component
 
     #[Validate(['nullable', 'exists:folders,id'])]
     public ?int $folder_id = null;
+
+    #[Validate(['nullable', 'exists:contacts,id'])]
+    public ?int $contact_id = null;
 
     public function render(): View
     {
@@ -43,6 +48,20 @@ class CreateFileRequest extends Component
             Log::error($t);
         }
 
+        if (! empty($contact = $request->contact)) {
+            $mailable = tap(new TemplatedMailable)
+                ->identifier(config('services.postmark.template.file_requested'))
+                ->include([
+                    'contact_name' => $contact->name,
+                    'request_title' => $request->title,
+                    'request_url' => $request->upload_short_url ?: $request->getUploadUrl(),
+                    'user_name' => $request->user->name,
+                ])
+                ->replyTo($request->user);
+
+            Mail::to($contact)->queue($mailable);
+        }
+
         $this->redirectRoute('requests.index');
     }
 
@@ -56,5 +75,11 @@ class CreateFileRequest extends Component
     public function tags(): Collection
     {
         return auth()->user()->tags()->orderBy('name')->get();
+    }
+
+    #[Computed]
+    public function contacts(): Collection
+    {
+        return auth()->user()->contacts()->orderBy('name')->get();
     }
 }
