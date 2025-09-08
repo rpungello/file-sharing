@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\DownloadFileController;
 use App\Http\Controllers\FileRequestUploadedController;
+use App\Livewire\CreateContact;
 use App\Livewire\CreateFileRequest;
+use App\Livewire\EditContact;
 use App\Livewire\EditFile;
+use App\Livewire\ManageContacts;
 use App\Livewire\ManageFileRequests;
 use App\Livewire\ManageFiles;
 use App\Livewire\ManageFolders;
@@ -45,6 +48,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('requests', ManageFileRequests::class)->name('requests.index');
     Route::get('requests/create', CreateFileRequest::class)->name('requests.create');
+
+    Route::get('contacts', ManageContacts::class)->name('contacts.index');
+    Route::get('contacts/create', CreateContact::class)->name('contacts.create');
+    Route::get('contacts/{contact}/edit', EditContact::class)->name('contacts.edit');
 });
 
 require __DIR__.'/auth.php';

@@ -96,6 +96,11 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasManyThrough(Download::class, File::class);
     }
 
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(Contact::class);
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->admin;

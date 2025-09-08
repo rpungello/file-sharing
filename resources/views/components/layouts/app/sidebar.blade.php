@@ -27,6 +27,7 @@
                     <flux:navlist.item icon="folder" :href="route('folders.index')" :current="request()->routeIs('folders.index')" wire:navigate>{{ __('Folders') }}</flux:navlist.item>
                     <flux:navlist.item icon="document" :href="route('files.index')" :current="request()->routeIs('files.index')" wire:navigate>{{ __('Files') }}</flux:navlist.item>
                     <flux:navlist.item icon="inbox" :href="route('requests.index')" :current="request()->routeIs('requests.index')" wire:navigate>{{ __('Requests') }}</flux:navlist.item>
+                    <flux:navlist.item icon="user-circle" :href="route('contacts.index')" :current="request()->routeIs('contacts.index')" wire:navigate>{{ __('Contacts') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
