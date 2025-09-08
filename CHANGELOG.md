@@ -2,6 +2,13 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 0.6.0 - 2025-09-08
+
+- Tweak default from name for emails
+- Add folders to file requests
+- Allow files to be updated
+- Add page for viewing folders
+
 ## 0.5.0 - 2025-09-07
 
 - Implemented basic dashboard
