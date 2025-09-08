@@ -3,6 +3,7 @@
 use App\Http\Controllers\DownloadFileController;
 use App\Http\Controllers\FileRequestUploadedController;
 use App\Livewire\CreateFileRequest;
+use App\Livewire\EditFile;
 use App\Livewire\ManageFileRequests;
 use App\Livewire\ManageFiles;
 use App\Livewire\ManageFolders;
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('files', ManageFiles::class)->name('files.index');
     Route::get('files/upload', UploadFile::class)->name('files.upload');
     Route::get('files/{file}', ShowFile::class)->name('files.show');
+    Route::get('files/{file}/edit', EditFile::class)->name('files.edit');
 
     Route::get('requests', ManageFileRequests::class)->name('requests.index');
     Route::get('requests/create', CreateFileRequest::class)->name('requests.create');

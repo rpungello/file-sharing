@@ -25,23 +25,35 @@
                     <flux:table.cell>{{ \Illuminate\Support\Number::fileSize($file->size) }}</flux:table.cell>
                     <flux:table.cell class="hidden xl:table-cell">{{ $file->created_at->format('F j, Y g:ia') }}</flux:table.cell>
                     <flux:table.cell>
-                        <flux:button size="sm"
-                                     :href="route('files.show', $file)"
-                                     icon="eye"
-                        />
-                        <flux:button size="sm"
-                                     :href="route('files.download', ['file' => $file->getKey(), 'token' => $file->download_token])"
-                                     icon="arrow-down-tray"
-                        />
-                        <flux:button size="sm"
-                                     icon="share"
-                                     wire:click="share({{ $file->getKey() }})"
-                        />
-                        <flux:button variant="danger"
-                                     size="sm"
-                                     icon="trash"
-                                     wire:click="removeFile({{ $file->getKey() }})"
-                        />
+                        @can('view', $file)
+                            <flux:button size="sm"
+                                         :href="route('files.show', $file)"
+                                         icon="eye"
+                            />
+                        @endcan
+                        @can('update', $file)
+                            <flux:button size="sm"
+                                         :href="route('files.edit', $file)"
+                                         icon="pencil"
+                            />
+                        @endcan
+                        @can('view', $file)
+                            <flux:button size="sm"
+                                         :href="route('files.download', ['file' => $file->getKey(), 'token' => $file->download_token])"
+                                         icon="arrow-down-tray"
+                            />
+                            <flux:button size="sm"
+                                         icon="share"
+                                         wire:click="share({{ $file->getKey() }})"
+                            />
+                        @endcan
+                        @can('delete', $file)
+                            <flux:button variant="danger"
+                                         size="sm"
+                                         icon="trash"
+                                         wire:click="removeFile({{ $file->getKey() }})"
+                            />
+                        @endcan
                     </flux:table.cell>
                 </flux:table.row>
             @endforeach
