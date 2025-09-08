@@ -8,6 +8,7 @@ use App\Filament\Resources\UserResource\RelationManagers\FoldersRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\TagsRelationManager;
 use App\Models\User;
 use BackedEnum;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -69,6 +70,9 @@ class UserResource extends Resource
                 //
             ])
             ->recordActions([
+                Action::make('approve')
+                    ->visible(fn (User $record) => $record->admin === false && empty($record->approved_at))
+                    ->action(fn (User $record) => $record->approve()),
                 EditAction::make(),
                 DeleteAction::make(),
             ])

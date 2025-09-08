@@ -26,11 +26,8 @@ Route::get('files/{file}/download', DownloadFileController::class)->name('files.
 Route::get('requests/{fileRequest}/upload', UploadFileRequest::class)->name('requests.upload');
 Route::get('requests/uploaded', FileRequestUploadedController::class)->name('requests.uploaded');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'approved'])->group(function () {
+    Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::redirect('settings', 'settings/profile');
 
     Route::get('settings/profile', Profile::class)->name('settings.profile');

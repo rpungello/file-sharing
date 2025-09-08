@@ -101,6 +101,12 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(Contact::class);
     }
 
+    public function approve(): void
+    {
+        $this->approved_at = now();
+        $this->save();
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->admin;
