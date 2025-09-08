@@ -9,8 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('file_requests', function (Blueprint $table) {
-           $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-           $table->foreign('folder_id')->references('id')->on('folders')->nullOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('folder_id')->references('id')->on('folders')->nullOnDelete();
         });
     }
 
