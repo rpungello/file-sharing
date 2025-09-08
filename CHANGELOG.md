@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 0.7.0 - 2025-09-08
+
+Added contacts
+
 ## 0.6.2 - 2025-09-08
 
 - Fix issues with expiration dates
