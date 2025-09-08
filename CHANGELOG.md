@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 0.6.1 - 2025-09-08
+
+Added auth checks
+
 ## 0.6.0 - 2025-09-08
 
 - Tweak default from name for emails
