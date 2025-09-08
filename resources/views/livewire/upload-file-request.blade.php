@@ -8,8 +8,21 @@
         x-on:livewire-upload-progress="progress = $event.detail.progress"
         class="space-y-4"
     >
+        <!-- User Display -->
+        <flux:input readonly :value="$fileRequest->user->name" :label="__('Requested By')" />
+
         <!-- Title Input -->
-        <flux:input wire:model="title" :label="__('Title')" />
+        <flux:input wire:model="title" :label="__('Title')" :badge="__('Required')" />
+
+        <!-- Description Display -->
+        <flux:textarea readonly :label="__('Description')">
+            {{ $fileRequest->description }}
+        </flux:textarea>
+
+        <!-- Folder Display -->
+        @if(!empty($fileRequest->folder_id))
+            <flux:input readonly :value="$fileRequest->folder?->title" :label="__('Folder')" />
+        @endif
 
         <!-- File Input -->
         <flux:input.file :label="__('File')" wire:model="file" />
