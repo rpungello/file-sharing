@@ -17,14 +17,22 @@
                 <flux:table.row>
                     <flux:table.cell>{{ $folder->title }}</flux:table.cell>
                     <flux:table.cell>{{ $folder->files()->count() }}</flux:table.cell>
-                    <flux:table.cell>{{ \Illuminate\Support\Number::fileSize($folder->files()->sum('size')) }}</flux:table.cell>
+                    <flux:table.cell>{{ \Illuminate\Support\Number::fileSize($folder->files->sum('size')) }}</flux:table.cell>
                     <flux:table.cell>{{ $folder->created_at->format('F j, Y g:ia') }}</flux:table.cell>
                     <flux:table.cell>
-                        <flux:button variant="danger"
-                                     size="sm"
-                                     icon="trash"
-                                     wire:click="removeFolder({{ $folder->getKey() }})"
-                        />
+                        @can('view', $folder)
+                            <flux:button size="sm"
+                                         icon="eye"
+                                         :href="route('folders.show', $folder)"
+                            />
+                        @endcan
+                        @can('delete', $folder)
+                            <flux:button variant="danger"
+                                         size="sm"
+                                         icon="trash"
+                                         wire:click="removeFolder({{ $folder->getKey() }})"
+                            />
+                        @endcan
                     </flux:table.cell>
                 </flux:table.row>
             @endforeach

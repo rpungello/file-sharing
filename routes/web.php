@@ -12,6 +12,7 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\ShowFile;
+use App\Livewire\ShowFolder;
 use App\Livewire\UploadFile;
 use App\Livewire\UploadFileRequest;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('tags', ManageTags::class)->name('tags.index');
 
     Route::get('folders', ManageFolders::class)->name('folders.index');
+    Route::get('folders/{folder}', ShowFolder::class)->name('folders.show');
     Route::get('files', ManageFiles::class)->name('files.index');
     Route::get('files/upload', UploadFile::class)->name('files.upload');
     Route::get('files/{file}', ShowFile::class)->name('files.show');

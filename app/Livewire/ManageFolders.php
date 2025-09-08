@@ -41,6 +41,10 @@ class ManageFolders extends Component
     #[Computed]
     public function folders(): LengthAwarePaginator
     {
-        return auth()->user()->folders()->orderByDesc('created_at')->paginate();
+        return auth()->user()
+            ->folders()
+            ->with('files')
+            ->orderByDesc('created_at')
+            ->paginate();
     }
 }
