@@ -31,7 +31,7 @@ class UploadFile extends Component
     public ?TemporaryUploadedFile $file = null;
 
     #[Validate(['nullable', 'date', 'after:today'])]
-    public string $expires_at = '';
+    public ?string $expires_at = null;
 
     public function render(): View
     {
@@ -40,6 +40,10 @@ class UploadFile extends Component
 
     public function uploadFile(): void
     {
+        if (empty($this->expires_at)) {
+            $this->expires_at = null;
+        }
+
         /** @var File $file */
         $file = auth()->user()->files()->create(
             array_merge(

@@ -30,7 +30,7 @@ class File extends Model
     ];
 
     protected $casts = [
-        'expires_at' => 'timestamp',
+        'expires_at' => 'datetime',
     ];
 
     public function user(): BelongsTo
