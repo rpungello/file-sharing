@@ -2,6 +2,12 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 0.8.0 - 2025-09-08
+
+- Require admin approvals for new accounts
+- Added contacts to admin dashboard
+- Added missing foreign keys
+
 ## 0.7.0 - 2025-09-08
 
 Added contacts
