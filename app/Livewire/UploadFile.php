@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Facades\Shlink;
+use App\Models\File;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Log;
@@ -39,6 +40,7 @@ class UploadFile extends Component
 
     public function uploadFile(): void
     {
+        /** @var File $file */
         $file = auth()->user()->files()->create(
             array_merge(
                 $this->validate(),

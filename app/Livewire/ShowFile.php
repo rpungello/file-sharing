@@ -10,6 +10,11 @@ class ShowFile extends Component
 {
     public File $file;
 
+    public function mount(): void
+    {
+        $this->authorize('view', $this->file);
+    }
+
     public function render(): View
     {
         return view('livewire.show-file');

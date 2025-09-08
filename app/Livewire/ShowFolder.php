@@ -10,6 +10,11 @@ class ShowFolder extends Component
 {
     public Folder $folder;
 
+    public function mount(): void
+    {
+        $this->authorize('view', $this->folder);
+    }
+
     public function render(): View
     {
         return view('livewire.show-folder');

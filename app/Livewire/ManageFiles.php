@@ -26,6 +26,8 @@ class ManageFiles extends Component
 
     public function share(File $file): void
     {
+        $this->authorize('view', $file);
+
         if (empty($file->download_short_url)) {
             $this->shareModelLink = route('files.download', [
                 'file' => $file->getKey(),
