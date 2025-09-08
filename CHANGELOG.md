@@ -2,6 +2,11 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 0.6.2 - 2025-09-08
+
+- Fix issues with expiration dates
+- Improve dashboard styling
+
 ## 0.6.1 - 2025-09-08
 
 Added auth checks
