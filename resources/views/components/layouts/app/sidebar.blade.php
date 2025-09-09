@@ -14,7 +14,6 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                    <flux:navlist.item icon="tag" :href="route('tags.index')" :current="request()->routeIs('tags.index')" wire:navigate>{{ __('Tags') }}</flux:navlist.item>
                     @can('viewHorizon')
                         <flux:navlist.item icon="cpu-chip" :href="route('horizon.index')" target="horizon">{{ __('Horizon') }}</flux:navlist.item>
                     @endif
@@ -24,10 +23,11 @@
                 </flux:navlist.group>
 
                 <flux:navlist.group :heading="__('Content')" class="grid">
-                    <flux:navlist.item icon="folder" :href="route('folders.index')" :current="request()->routeIs('folders.index')" wire:navigate>{{ __('Folders') }}</flux:navlist.item>
                     <flux:navlist.item icon="document" :href="route('files.index')" :current="request()->routeIs('files.index')" wire:navigate>{{ __('Files') }}</flux:navlist.item>
+                    <flux:navlist.item icon="folder" :href="route('folders.index')" :current="request()->routeIs('folders.index')" wire:navigate>{{ __('Folders') }}</flux:navlist.item>
                     <flux:navlist.item icon="inbox" :href="route('requests.index')" :current="request()->routeIs('requests.index')" wire:navigate>{{ __('Requests') }}</flux:navlist.item>
-                    <flux:navlist.item icon="user-circle" :href="route('contacts.index')" :current="request()->routeIs('contacts.index')" wire:navigate>{{ __('Contacts') }}</flux:navlist.item>
+                    <flux:navlist.item icon="at-symbol" :href="route('contacts.index')" :current="request()->routeIs('contacts.index')" wire:navigate>{{ __('Contacts') }}</flux:navlist.item>
+                    <flux:navlist.item icon="tag" :href="route('tags.index')" :current="request()->routeIs('tags.index')" wire:navigate>{{ __('Tags') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
