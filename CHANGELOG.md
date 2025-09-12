@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 0.9.0 - 2025-09-12
+
+Overhaul navigation UI
+
 ## 0.8.1 - 2025-09-09
 
 Added version to header
