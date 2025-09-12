@@ -4,44 +4,48 @@
         @include('partials.head')
     </head>
     <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <flux:sidebar sticky stashable class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
-            <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
+        <flux:sidebar sticky collapsible class="bg-zinc-50 dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-700">
+            <flux:sidebar.header>
+                <flux:sidebar.brand
+                    :href="route('dashboard')"
+                    :name="config('app.name')"
+                >
+                    <x-slot:logo>
+                        <flux:icon name="share"/>
+                    </x-slot:logo>
+                </flux:sidebar.brand>
+                <flux:sidebar.collapse class="in-data-flux-sidebar-on-desktop:not-in-data-flux-sidebar-collapsed-desktop:-mr-2" />
+            </flux:sidebar.header>
 
-            <a href="{{ route('dashboard') }}" class="me-5 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
-                <x-app-logo />
-            </a>
-
-            <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+            <flux:sidebar.nav>
+                <flux:sidebar.group expandable :heading="__('Platform')" class="grid" icon="square-3-stack-3d">
+                    <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:sidebar.item>
                     @can('viewHorizon')
-                        <flux:navlist.item icon="cpu-chip" :href="route('horizon.index')" target="horizon">{{ __('Horizon') }}</flux:navlist.item>
+                        <flux:sidebar.item icon="cpu-chip" :href="route('horizon.index')" target="horizon">{{ __('Horizon') }}</flux:sidebar.item>
                     @endif
                     @if(auth()->user()?->admin)
-                        <flux:navlist.item icon="light-bulb" :href="route('filament.admin.pages.dashboard')" target="filament">{{ __('Filament') }}</flux:navlist.item>
+                        <flux:sidebar.item icon="light-bulb" :href="route('filament.admin.pages.dashboard')" target="filament">{{ __('Filament') }}</flux:sidebar.item>
                     @endif
-                </flux:navlist.group>
+                </flux:sidebar.group>
 
-                <flux:navlist.group :heading="__('Content')" class="grid">
-                    <flux:navlist.item icon="document" :href="route('files.index')" :current="request()->routeIs('files.index')" wire:navigate>{{ __('Files') }}</flux:navlist.item>
-                    <flux:navlist.item icon="folder" :href="route('folders.index')" :current="request()->routeIs('folders.index')" wire:navigate>{{ __('Folders') }}</flux:navlist.item>
-                    <flux:navlist.item icon="inbox" :href="route('requests.index')" :current="request()->routeIs('requests.index')" wire:navigate>{{ __('Requests') }}</flux:navlist.item>
-                    <flux:navlist.item icon="at-symbol" :href="route('contacts.index')" :current="request()->routeIs('contacts.index')" wire:navigate>{{ __('Contacts') }}</flux:navlist.item>
-                    <flux:navlist.item icon="tag" :href="route('tags.index')" :current="request()->routeIs('tags.index')" wire:navigate>{{ __('Tags') }}</flux:navlist.item>
-                </flux:navlist.group>
-            </flux:navlist>
+                <flux:sidebar.item icon="document" :href="route('files.index')" :current="request()->routeIs('files.index')" wire:navigate>{{ __('Files') }}</flux:sidebar.item>
+                <flux:sidebar.item icon="folder" :href="route('folders.index')" :current="request()->routeIs('folders.index')" wire:navigate>{{ __('Folders') }}</flux:sidebar.item>
+                <flux:sidebar.item icon="inbox" :href="route('requests.index')" :current="request()->routeIs('requests.index')" wire:navigate>{{ __('Requests') }}</flux:sidebar.item>
+                <flux:sidebar.item icon="at-symbol" :href="route('contacts.index')" :current="request()->routeIs('contacts.index')" wire:navigate>{{ __('Contacts') }}</flux:sidebar.item>
+                <flux:sidebar.item icon="tag" :href="route('tags.index')" :current="request()->routeIs('tags.index')" wire:navigate>{{ __('Tags') }}</flux:sidebar.item>
+            </flux:sidebar.nav>
 
-            <flux:spacer />
+            <flux:sidebar.spacer />
 
-            <flux:navlist variant="outline">
-                <flux:navlist.item icon="folder-git-2" href="https://github.com/rpungello/file-sharing" target="_blank">
+            <flux:sidebar.nav>
+                <flux:sidebar.item icon="folder-git-2" href="https://github.com/rpungello/file-sharing" target="_blank">
                 {{ __('Repository') }}
-                </flux:navlist.item>
-            </flux:navlist>
+                </flux:sidebar.item>
+            </flux:sidebar.nav>
 
             <!-- Desktop User Menu -->
             <flux:dropdown class="hidden lg:block" position="bottom" align="start">
-                <flux:profile
+                <flux:sidebar.profile
                     :name="auth()->user()->name"
                     :initials="auth()->user()->initials()"
                     :avatar="auth()->user()->profilePhotoUrl()"
