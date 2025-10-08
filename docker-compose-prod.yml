@@ -9,6 +9,14 @@ services:
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8000/up" ]
 
+  nightwatch:
+    image: "ghcr.io/rpungello/file-sharing:${IMAGE_TAG:-latest}"
+    env_file: stack.env
+    entrypoint: [ "php", "artisan", "nightwatch:agent" ]
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "php", "artisan", "nightwatch:status" ]
+
   scheduler:
     image: "ghcr.io/rpungello/file-sharing:${IMAGE_TAG:-latest}"
     env_file: stack.env
