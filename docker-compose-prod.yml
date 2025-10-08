@@ -11,7 +11,8 @@ services:
 
   nightwatch:
     image: "laravelphp/nightwatch-agent:v1"
-    env_file: stack.env
+    environment:
+      - NIGHTWATCH_TOKEN="${NIGHTWATCH_TOKEN}"
     restart: unless-stopped
 
   scheduler:
