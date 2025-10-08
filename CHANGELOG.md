@@ -2,6 +2,11 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 1.0.0 - 2025-10-08
+
+- Add Nightwatch for logging
+- Update `composer` and `npm` dependencies
+
 ## 0.9.0 - 2025-09-12
 
 Overhaul navigation UI
