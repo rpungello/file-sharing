@@ -4,7 +4,7 @@ All notable changes to `rpungello/file-sharing` will be documented in this file.
 
 ## 1.0.1 - 2025-10-08
 
-Disable Nightwatch on `/up` end route
+Disable Nightwatch on `/up` route
 
 ## 1.0.0 - 2025-10-08
 
