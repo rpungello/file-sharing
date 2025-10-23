@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Console\Events\CommandStarting;
 use Illuminate\Foundation\Events\DiagnosingHealth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +30,14 @@ class AppServiceProvider extends ServiceProvider
 
         Event::listen(function (DiagnosingHealth $event) {
             Nightwatch::dontSample();
+        });
+
+        Event::listen(function (CommandStarting $event) {
+            if (in_array($event->command, [
+                'horizon:status',
+            ])) {
+                Nightwatch::dontSample();
+            }
         });
     }
 }
