@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 1.0.2 - 2025-10-23
+
+Disable Nightwatch for `horizon:status` command
+
 ## 1.0.1 - 2025-10-08
 
 Disable Nightwatch on `/up` route
