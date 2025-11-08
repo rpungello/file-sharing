@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 1.0.4 - 2025-11-08
+
+Increase max exec time
+
 ## 1.0.3 - 2025-11-04
 
 - Increase max user agent length
