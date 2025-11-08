@@ -18,6 +18,7 @@ RUN --mount=type=secret,id=FLUX_LICENSE_KEY \
  && mkdir /config/psysh && chown -R ${USER}:${USER} /config/psysh \
  && chown -R ${USER}:${USER} /data/caddy && chown -R ${USER}:${USER} /config/caddy \
  && chown -R ${USER}:${USER} /app \
+ && echo "max_execution_time = 120" >/usr/local/etc/php/conf.d/app.ini \
  && rm -f /app/auth.json
 
 USER ${USER}
