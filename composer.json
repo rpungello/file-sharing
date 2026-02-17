@@ -7,10 +7,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "awcodes/filament-gravatar": "^3.0",
+        "awcodes/filament-gravatar": "^4.0",
         "coconutcraig/laravel-postmark": "^3.3",
         "dyrynda/laravel-nullable-fields": "^4.5",
-        "filament/filament": "^4.0",
+        "filament/filament": "^5.0",
         "laravel/framework": "^12.0",
         "laravel/horizon": "^5.33",
         "laravel/nightwatch": "^1.14",
@@ -25,6 +25,7 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "filament/upgrade": "^5.0",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.18",
         "laravel/sail": "^1.41",
