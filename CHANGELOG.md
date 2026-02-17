@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 1.1.0 - 2026-02-17
+
+Upgrade dependencies
+
 ## 1.0.4 - 2025-11-08
 
 Increase max exec time
