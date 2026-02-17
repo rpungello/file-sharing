@@ -1,4 +1,4 @@
-<x-layouts.guest>
+<x-layouts::guest>
     <flux:callout variant="success">
         <flux:callout.heading>
             {{ __('Upload Received') }}
@@ -9,4 +9,4 @@
             You may now close this page.
         </flux:callout.text>
     </flux:callout>
-</x-layouts.guest>
+</x-layouts::guest>
