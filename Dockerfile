@@ -1,4 +1,4 @@
-FROM ghcr.io/rpungello/laravel-frankenphp:php8.4-trixie
+FROM ghcr.io/rpungello/laravel-frankenphp:php8.5-trixie
 LABEL org.opencontainers.image.authors="rob@rpun.io"
 
 ARG VERSION=1.0.0
