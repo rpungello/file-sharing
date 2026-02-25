@@ -35,7 +35,7 @@ class UploadFileRequest extends Component
         $this->title = $this->fileRequest->title;
     }
 
-    #[Layout('components.layouts.guest')]
+    #[Layout('layouts.guest')]
     public function render(): View
     {
         return view('livewire.upload-file-request');
