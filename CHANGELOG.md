@@ -2,6 +2,11 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 1.1.2 - 2026-02-26
+
+- Update dependencies
+- Capture size before storing files
+
 ## 1.1.1 - 2026-02-25
 
 Fix public file uploads (requests)
