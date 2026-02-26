@@ -50,8 +50,8 @@ class UploadFileRequest extends Component
                 'folder_id' => $this->fileRequest->folder_id,
                 'title' => $this->title,
                 'filename' => $this->file->getClientOriginalName(),
-                'path' => $this->file->store('files'),
                 'size' => $this->file->getSize(),
+                'path' => $this->file->store('files'),
             ]
         );
 

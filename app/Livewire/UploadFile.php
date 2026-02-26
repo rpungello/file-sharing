@@ -50,8 +50,8 @@ class UploadFile extends Component
                 $this->validate(),
                 [
                     'filename' => $this->file->getClientOriginalName(),
-                    'path' => $this->file->store('files'),
                     'size' => $this->file->getSize(),
+                    'path' => $this->file->store('files'),
                 ]
             )
         );
