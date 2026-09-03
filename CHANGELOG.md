@@ -2,6 +2,11 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 1.1.3 - 2026-09-03
+
+- Update dependencies
+- Allow `null` `user_agent` in `downloads` table
+
 ## 1.1.2 - 2026-02-26
 
 - Update dependencies
