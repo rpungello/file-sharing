@@ -9,14 +9,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('downloads', function (Blueprint $table) {
-            $table->string('user_agent')->nullable()->change();
+            $table->string('user_agent', 512)->nullable()->change();
         });
     }
 
     public function down(): void
     {
         Schema::table('downloads', function (Blueprint $table) {
-            $table->string('user_agent')->nullable(false)->change();
+            $table->string('user_agent', 512)->nullable(false)->change();
         });
     }
 };
