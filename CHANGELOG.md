@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/file-sharing` will be documented in this file.
 
+## 1.1.4 - 2026-09-03
+
+Fix user agent length
+
 ## 1.1.3 - 2026-09-03
 
 - Update dependencies
